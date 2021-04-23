@@ -23,7 +23,9 @@ CREATE TABLE IF NOT EXISTS `activity_category` (
   `category_designation` varchar(20) DEFAULT NULL COMMENT '类别描述',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_activity_id_idx` (`category_id`),
+  CONSTRAINT `fk_activity_id` FOREIGN KEY (`category_id`) REFERENCES `activity_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务类别表';
 
 -- 正在导出表  fidle.activity_category 的数据：~0 rows (大约)
@@ -37,7 +39,11 @@ CREATE TABLE IF NOT EXISTS `activity_enshrine` (
   `activity_id` bigint DEFAULT NULL COMMENT '活动id',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_ae_user_id_idx` (`user_id`),
+  KEY `fk_ae_activity_id_idx` (`activity_id`),
+  CONSTRAINT `fk_ae_activity_id` FOREIGN KEY (`activity_id`) REFERENCES `activity_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_ae_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动收藏表';
 
 -- 正在导出表  fidle.activity_enshrine 的数据：~0 rows (大约)
@@ -51,7 +57,9 @@ CREATE TABLE IF NOT EXISTS `activity_image` (
   `image_link` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片链接',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_activity_image_idx` (`activity_id`),
+  CONSTRAINT `fk_activity_image` FOREIGN KEY (`activity_id`) REFERENCES `activity_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动图片';
 
 -- 正在导出表  fidle.activity_image 的数据：~0 rows (大约)
@@ -70,7 +78,9 @@ CREATE TABLE IF NOT EXISTS `activity_info` (
   `category` int DEFAULT NULL COMMENT '类别',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_pub_id_idx` (`pub_id`),
+  CONSTRAINT `fk_pub_id` FOREIGN KEY (`pub_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动信息表';
 
 -- 正在导出表  fidle.activity_info 的数据：~0 rows (大约)
@@ -87,7 +97,11 @@ CREATE TABLE IF NOT EXISTS `activity_report_message` (
   `state` int DEFAULT NULL COMMENT '状态：int（-1：未送出 0：未处理  1：未通过  2：已处理）',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_arm_whis_id_idx` (`whistleblower_id`),
+  KEY `fk_arm_activity_id_idx` (`reported_activity_id`),
+  CONSTRAINT `fk_arm_activity_id` FOREIGN KEY (`reported_activity_id`) REFERENCES `activity_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_arm_whis_id` FOREIGN KEY (`whistleblower_id`) REFERENCES `activity_report_message` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动举报信息表';
 
 -- 正在导出表  fidle.activity_report_message 的数据：~0 rows (大约)
@@ -101,7 +115,11 @@ CREATE TABLE IF NOT EXISTS `activity_tag` (
   `tag_id` bigint DEFAULT NULL COMMENT '标签id',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_activityid_idx` (`activity_id`),
+  KEY `fk_tagid_idx` (`tag_id`),
+  CONSTRAINT `fk_activityid` FOREIGN KEY (`activity_id`) REFERENCES `activity_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_activitytagid` FOREIGN KEY (`tag_id`) REFERENCES `tag_of_activity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动标签对应表';
 
 -- 正在导出表  fidle.activity_tag 的数据：~0 rows (大约)
@@ -132,7 +150,9 @@ CREATE TABLE IF NOT EXISTS `credit` (
   `dislike_num` int DEFAULT NULL COMMENT '点踩数',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_credit_user_idx` (`user_id`),
+  CONSTRAINT `fk_credit_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户信誉表';
 
 -- 正在导出表  fidle.credit 的数据：~0 rows (大约)
@@ -146,7 +166,9 @@ CREATE TABLE IF NOT EXISTS `goods_category` (
   `category_designation` varchar(20) DEFAULT NULL COMMENT '类别描述',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_goods_id_idx` (`category_id`),
+  CONSTRAINT `fk_goods_id` FOREIGN KEY (`category_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手类别表';
 
 -- 正在导出表  fidle.goods_category 的数据：~0 rows (大约)
@@ -160,7 +182,11 @@ CREATE TABLE IF NOT EXISTS `goods_enshrine` (
   `goods_id` bigint DEFAULT NULL COMMENT '二手物品id',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_goods_enshrine_idx` (`user_id`),
+  KEY `fk_goods_id_idx` (`goods_id`),
+  CONSTRAINT `fk_ge_goods_id` FOREIGN KEY (`goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_ge_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手收藏表';
 
 -- 正在导出表  fidle.goods_enshrine 的数据：~0 rows (大约)
@@ -176,7 +202,11 @@ CREATE TABLE IF NOT EXISTS `goods_evaluation` (
   `reason` varchar(100) DEFAULT NULL COMMENT '评价理由',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_ge_valuator_id_idx` (`valuator_id`),
+  KEY `fk_ge_goods_id_idx` (`goods_id`),
+  CONSTRAINT `fk_ge_goodss_id` FOREIGN KEY (`goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_ge_valuator_id` FOREIGN KEY (`valuator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手评价表';
 
 -- 正在导出表  fidle.goods_evaluation 的数据：~0 rows (大约)
@@ -190,7 +220,9 @@ CREATE TABLE IF NOT EXISTS `goods_image` (
   `image_link` varchar(100) DEFAULT NULL COMMENT '图片链接',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_goods_image_idx` (`goods_id`),
+  CONSTRAINT `fk_goods_image` FOREIGN KEY (`goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手物品图片表';
 
 -- 正在导出表  fidle.goods_image 的数据：~0 rows (大约)
@@ -209,7 +241,17 @@ CREATE TABLE IF NOT EXISTS `goods_indent` (
   `is_buyer_evaluated` int DEFAULT NULL COMMENT '买家评价状态',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_goods_info_id_idx` (`goods_id`),
+  KEY `fk_pub_id_idx` (`buyer_id`),
+  KEY `fk_seller_id_idx` (`seller_id`),
+  KEY `fk_buyer_evaluation_idx` (`buyer_evaluate_id`),
+  KEY `fk_seller_evaluation_idx` (`seller_evaluate_id`),
+  CONSTRAINT `fk_buyer_evaluation` FOREIGN KEY (`buyer_evaluate_id`) REFERENCES `goods_evaluation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_buyer_id` FOREIGN KEY (`buyer_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_goods_info_id` FOREIGN KEY (`goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_seller_evaluation` FOREIGN KEY (`seller_evaluate_id`) REFERENCES `goods_evaluation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_seller_id` FOREIGN KEY (`seller_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT=' 二手订单表';
 
 -- 正在导出表  fidle.goods_indent 的数据：~0 rows (大约)
@@ -229,7 +271,9 @@ CREATE TABLE IF NOT EXISTS `goods_info` (
   `is_sold` int DEFAULT NULL COMMENT '是否售出（0：在售 1：已售）',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_seller_id_idx` (`seller_id`),
+  CONSTRAINT `fk_info_seller_id` FOREIGN KEY (`seller_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='物品信息表';
 
 -- 正在导出表  fidle.goods_info 的数据：~0 rows (大约)
@@ -246,7 +290,11 @@ CREATE TABLE IF NOT EXISTS `goods_report_message` (
   `state` int DEFAULT NULL COMMENT '状态：int（-1：未送出 0：未处理  1：未通过  2：已处理）',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_grm_whis_id_idx` (`whistleblower_id`),
+  KEY `fk_grm_goods_id_idx` (`reported_goods_id`),
+  CONSTRAINT `fk_grm_goods_id` FOREIGN KEY (`reported_goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_grm_whis_id` FOREIGN KEY (`whistleblower_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手举报信息表';
 
 -- 正在导出表  fidle.goods_report_message 的数据：~0 rows (大约)
@@ -260,7 +308,11 @@ CREATE TABLE IF NOT EXISTS `goods_tag` (
   `tag_id` bigint DEFAULT NULL COMMENT '标签id',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_goods_id_idx` (`goods_id`),
+  KEY `fk_tag_id_idx` (`tag_id`),
+  CONSTRAINT `fk_goods_tag_id` FOREIGN KEY (`goods_id`) REFERENCES `goods_info` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_tag_id` FOREIGN KEY (`tag_id`) REFERENCES `tag_of_goods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='二手物品标签对应表';
 
 -- 正在导出表  fidle.goods_tag 的数据：~0 rows (大约)
@@ -277,7 +329,9 @@ CREATE TABLE IF NOT EXISTS `system_message` (
   `state` int DEFAULT NULL COMMENT '状态（-1：未送出 0：未读  1：已读）',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_sm_user_id_idx` (`acc_id`),
+  CONSTRAINT `fk_sm_acc_id` FOREIGN KEY (`acc_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统消息表';
 
 -- 正在导出表  fidle.system_message 的数据：~0 rows (大约)
@@ -330,7 +384,9 @@ CREATE TABLE IF NOT EXISTS `task_category` (
   `category_designation` varchar(20) DEFAULT NULL COMMENT '类别描述',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_task_id_idx` (`category_id`),
+  CONSTRAINT `fk_task_id` FOREIGN KEY (`category_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务类别类';
 
 -- 正在导出表  fidle.task_category 的数据：~0 rows (大约)
@@ -349,7 +405,17 @@ CREATE TABLE IF NOT EXISTS `task_delegate` (
   `is_acc_evaluated` int DEFAULT NULL COMMENT '接收方评价状态',
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_td_delegate_info_idx` (`task_info_id`),
+  KEY `fk_td_pub_id_idx` (`pub_id`),
+  KEY `fk_td_acc_id_idx` (`acc_id`),
+  KEY `fk_acc_evaluate_id_idx` (`acc_evaluate_id`),
+  KEY `fk_evaluate_id_idx` (`pub_evaluate_id`),
+  CONSTRAINT `fk_acc_evaluate_id` FOREIGN KEY (`acc_evaluate_id`) REFERENCES `task_evaluation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_evaluate_id` FOREIGN KEY (`pub_evaluate_id`) REFERENCES `task_evaluation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_td_acc_id` FOREIGN KEY (`acc_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_td_delegate_info_id` FOREIGN KEY (`task_info_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_td_pub_id` FOREIGN KEY (`pub_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务委托项表';
 
 -- 正在导出表  fidle.task_delegate 的数据：~0 rows (大约)
@@ -363,7 +429,11 @@ CREATE TABLE IF NOT EXISTS `task_enshrine` (
   `task_id` bigint DEFAULT NULL COMMENT '任务委托表',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_te_user_id_idx` (`user_id`),
+  KEY `fk_te_task_id_idx` (`task_id`),
+  CONSTRAINT `fk_te_task_id` FOREIGN KEY (`task_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_te_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务收藏表';
 
 -- 正在导出表  fidle.task_enshrine 的数据：~0 rows (大约)
@@ -379,7 +449,11 @@ CREATE TABLE IF NOT EXISTS `task_evaluation` (
   `reason` varchar(100) DEFAULT NULL COMMENT '理由',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_te_task_id_idx` (`task_delegate_id`),
+  KEY `fk_te_valu_id_idx` (`valuator_id`),
+  CONSTRAINT `fk_te_tasks_id` FOREIGN KEY (`task_delegate_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_te_valu_id` FOREIGN KEY (`valuator_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务评价表';
 
 -- 正在导出表  fidle.task_evaluation 的数据：~0 rows (大约)
@@ -399,7 +473,9 @@ CREATE TABLE IF NOT EXISTS `task_information` (
   `description` varchar(2000) DEFAULT NULL COMMENT '描述',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_task_pub_id_idx` (`pub_id`),
+  CONSTRAINT `fk_task_pub_id` FOREIGN KEY (`pub_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务信息表';
 
 -- 正在导出表  fidle.task_information 的数据：~0 rows (大约)
@@ -416,7 +492,11 @@ CREATE TABLE IF NOT EXISTS `task_report_message` (
   `state` int DEFAULT NULL COMMENT '状态：int（-1：未送出 0：未处理  1：未通过  2：已处理）',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_trm_whis_id_idx` (`whistleblower_id`),
+  KEY `fk_trm_task_id_idx` (`reported_task_id`),
+  CONSTRAINT `fk_trm_task_id` FOREIGN KEY (`reported_task_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_trm_whis_id` FOREIGN KEY (`whistleblower_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务举报消息表';
 
 -- 正在导出表  fidle.task_report_message 的数据：~0 rows (大约)
@@ -430,7 +510,11 @@ CREATE TABLE IF NOT EXISTS `task_tag` (
   `tag_id` bigint DEFAULT NULL COMMENT '标签id',
   `gmt_create` datetime DEFAULT NULL,
   `gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_tag_id_idx` (`tag_id`),
+  KEY `fk_tag_task_id_idx` (`task_id`),
+  CONSTRAINT `fk_tagid` FOREIGN KEY (`tag_id`) REFERENCES `tag_of_task` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_taskid` FOREIGN KEY (`task_id`) REFERENCES `task_information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务标签对应表';
 
 -- 正在导出表  fidle.task_tag 的数据：~0 rows (大约)

@@ -1,0 +1,1433 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:w="urn:schemas-microsoft-com:office:word"
+    xmlns="http://www.w3.org/TR/REC-html40">
+    <head><meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style type="text/css">
+        table  
+        {  
+            border-collapse: collapse;
+            border: none;  
+            width: 100%;  
+        }  
+        td,tr  
+        {  
+            border: solid #CCC 1px;
+            padding:3px;
+            font-size:9pt;
+        } 
+        .codestyle{
+            word-break: break-all;
+            mso-highlight:rgb(252, 252, 252);
+            padding-left: 5px; background-color: rgb(252, 252, 252); border: 1px solid rgb(225, 225, 232);
+        }
+        img {
+            width:100;
+        }
+    </style>
+    <meta name=ProgId content=Word.Document>
+    <meta name=Generator content="Microsoft Word 11">
+    <meta name=Originator content="Microsoft Word 11">
+    <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+    <body><h1>1、导航栏接口</h1><div style="margin-left:20px;"><h3>退出登录</h3>
+<h5>简要描述</h5>
+<ul>
+<li>退出登录接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/ /logout</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET </li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": 请求成功,
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">int</td>
+<td>响应状态码，200为成功；</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<p>-</p></div><h1>2、后台首页接口</h1><div style="margin-left:20px;"><h3>后台登录</h3>
+<h5>简要描述</h5>
+<ul>
+<li>后台登录接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/ /login</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">account</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "id": "1",
+            "account": "ZZZZCX",
+        }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">int</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">account</td>
+<td style="text-align: left;">String</td>
+<td>用户名</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<p>-</p>
+<h3>获取总用户数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取总用户数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//totalUsersNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            totalUsersNum:500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalUsersNum</td>
+<td style="text-align: left;">int</td>
+<td>当前总用户总数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取总二手物品数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取总二手物品发布数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//totalGoodsNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "totalGoodsNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalGoodsNum</td>
+<td style="text-align: left;">int</td>
+<td>当前二手物品发布总数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取总任务委托数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取总任务委托发布数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//totalTasksNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "totalTasksNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalTasksNum</td>
+<td style="text-align: left;">int</td>
+<td>当前任务委托发布总数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取总活动信息数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取总活动信息发布数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//totalActivitiesNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "totalActivitiesNum":500
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalActivitiesNum</td>
+<td style="text-align: left;">int</td>
+<td>当前活动信息发布总数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取每日新增用户数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取每日新增用户数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//newUsersNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "code": 200,
+    "message":"请求成功"
+    "data": {
+      "newUsersNum":500
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">newUsersNum</td>
+<td style="text-align: left;">int</td>
+<td>今日新增用户数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取每日新增二手物品数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取每日新增二手物品数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//newGoodsNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "code": 200,
+    "message":"请求成功"
+    "data": {
+      "newGoodsNum":500
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">newGoodsNum</td>
+<td style="text-align: left;">int</td>
+<td>今日新增二手物品数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取每日新增任务委托数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取每日新增任务委托数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//newTasksNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>  {
+    "code": 200,
+    "message":"请求成功"
+    "data": {
+      "newTasksNum":500
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">newTasksNum</td>
+<td style="text-align: left;">int</td>
+<td>今日新增任务委托数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取每日新增活动信息数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取每日新增活动信息数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//newActivitiesNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "newActivitiesNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">newActivitiesNum</td>
+<td style="text-align: left;">int</td>
+<td>今日新增活动信息数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取待处理二手物品举报数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取待处理二手物品举报数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//goodsReportNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "goodsReportNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">goodsReportNum</td>
+<td style="text-align: left;">int</td>
+<td>待处理二手物品举报数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取待处理任务委托举报数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取待处理任务委托举报数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//tasksReportNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "tasksReportNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tasksReportNum</td>
+<td style="text-align: left;">int</td>
+<td>待处理任务委托举报数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>获取待处理活动信息举报数量</h3>
+<h5>简要描述</h5>
+<ul>
+<li>获取待处理活动信息举报数量接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>//activitiesReportNum</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "activitiesReportNum":500
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">activitiesReportNum</td>
+<td style="text-align: left;">int</td>
+<td>待处理活动信息举报数量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据时间返回发布量趋势</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据时间返回发布量趋势接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/ /releaseNumTrend</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>POST </li>
+</ul>
+<h5>参数</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">dayNum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>表示返回近n天的发布量</td>
+</tr>
+</tbody>
+</table>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message":"请求成功"
+        "data": {
+            "goodsReleaseList":
+            [
+                {
+                    "beginTime":"2021-4-22",        //开始时间
+                    "endTime":"2021-4-23",          //结束时间
+                    "releaseNum": 500               //该时间段内的发布量
+                }，
+                {
+                    "beginTime":"2021-4-23",        //开始时间
+                    "endTime":"2021-4-24",          //结束时间
+                    "releaseNum": 500               //该时间段内的发布量
+                },
+                {
+                    "beginTime":"2021-4-24",        //开始时间
+                    "endTime":"2021-4-25",          //结束时间
+                    "releaseNum": 500               //该时间段内的发布量
+                }
+            ],
+        "tasksReleaseList":
+        [
+            {
+                "beginTime":"2021-4-22",        //开始时间
+                "endTime":"2021-4-23",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            }，
+            {
+                "beginTime":"2021-4-23",        //开始时间
+                "endTime":"2021-4-24",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            },
+            {
+                "beginTime":"2021-4-24",        //开始时间
+                "endTime":"2021-4-25",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            }
+        ],
+        "activitiesReleaseList":
+        [
+            {
+                "beginTime":"2021-4-22",        //开始时间
+                "endTime":"2021-4-23",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            }，
+            {
+                "beginTime":"2021-4-23",        //开始时间
+                "endTime":"2021-4-24",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            },
+            {
+                "beginTime":"2021-4-24",        //开始时间
+                "endTime":"2021-4-25",          //结束时间
+                "releaseNum": 500               //该时间段内的发布量
+            }
+      ]
+    }
+  }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">goodsReleaseList</td>
+<td style="text-align: left;">ReleaseNum</td>
+<td>二手物品信息在某个时间段内的发布量</td>
+</tr>
+<tr>
+<td style="text-align: left;">tasksReleaseList</td>
+<td style="text-align: left;">ReleaseNum</td>
+<td>任务委托信息在某个时间段内的发布量</td>
+</tr>
+<tr>
+<td style="text-align: left;">activitiesReleaseList</td>
+<td style="text-align: left;">ReleaseNum</td>
+<td>活动信息在某个时间段内的发布量</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h1>3、后台举报处理页</h1><div style="margin-left:20px;"><h3>根据页号返回二手举报列表</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回二手举报列表接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /goodsReport/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            goodsReports:
+            [
+                {
+                    "id":1
+                    "reported"：2,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                },
+                {
+                    "id":2
+                    "reported"：3,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">goodsReports</td>
+<td style="text-align: left;">ReportMessage</td>
+<td>二手物品举报信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据页号返回任务举报列表</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回任务举报列表接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /tasksReport/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            tasksReports:
+            [
+                {
+                    "id":1
+                    "reported"：2,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                },
+                {
+                    "id":2
+                    "reported"：3,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tasksReports</td>
+<td style="text-align: left;">ReportMessage</td>
+<td>任务举报信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据页号返回活动举报列表</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回活动举报列表接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /activitiesReport/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            activitiesReports:
+            [
+                {
+                    "id":1
+                    "reported"：2,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                },
+                {
+                    "id":2
+                    "reported"：3,       //被举报的信息id
+                    "title"："举报",
+                    "reason"："涉嫌违规信息"
+                    "gmt_create": "2021-4-11"           //创建时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">activitiesReport</td>
+<td style="text-align: left;">ReportMessage</td>
+<td>活动举报信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>通过二手举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id通过二手举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /handleGoodsReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            "username"："ZZZZCX",
+            "creditScore": 2000         
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>发布者的用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">creditScore</td>
+<td style="text-align: left;">int</td>
+<td>处理后该用户的信誉分</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>通过任务举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id通过任务举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /handleTasksReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            "username"："ZZZZCX",
+            "creditScore": 2000         
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>发布者的用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">creditScore</td>
+<td style="text-align: left;">int</td>
+<td>处理后该用户的信誉分</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>通过活动举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id通过活动举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /handleActivityReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+            "username"："ZZZZCX",
+            "creditScore": 2000         
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>发布者的用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">creditScore</td>
+<td style="text-align: left;">int</td>
+<td>处理后该用户的信誉分</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>忽略二手举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id忽略二手举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /ignoreGoodsReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>忽略任务举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id忽略任务举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /ignoreTasksReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>忽略活动举报</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id忽略活动举报接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /ignoreActivityReport/{reportid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功"
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h1>4、二手物品信息页</h1><div style="margin-left:20px;"><h3>返回全部二手物品信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回全部二手物品信息</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /goods/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+            goodsList:
+            [
+                {
+                    "id":1      
+                    "announcerId":11,       //发布人ID
+                    "title"："高数课本",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                },
+                {
+                    "id":2      
+                    "announcerId":11,       //发布人ID
+                    "title"："高数课本",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">goodsList</td>
+<td style="text-align: left;">Goods</td>
+<td>二手物品信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据id删除二手物品信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id删除二手物品信息接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /deleteGoods/{id}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul></div><h1>5、任务委托信息页</h1><div style="margin-left:20px;"><h3>返回全部任务委托信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回全部任务委托信息</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /tasks/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+            tasksList:
+            [
+                {
+                    "id":1      
+                    "announcerId":11,       //发布者ID
+                    "title"："取快递",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                },
+                {
+                    "id":2      
+                    "announcerId":11,       //发布者ID
+                    "title"："取快递",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tasksList</td>
+<td style="text-align: left;">Task</td>
+<td>任务委托信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据id删除任务委托信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id删除任务委托信息接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /deleteTask/{id}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul></div><h1>6、活动信息页</h1><div style="margin-left:20px;"><h3>返回全部活动信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据页号返回全部活动信息</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /activities/page/{pageid}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+            activityList:
+            [
+                {
+                    "id":1      
+                    "announcerId":11,       //发布者ID
+                    "title"："团立项",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                },
+                {
+                    "id":2      
+                    "announcerId":11,       //发布者ID
+                    "title"："团立项",   //标题
+                    "category"：1,           //类别
+                    "announcer":"zzzzcx",   //发布人
+                    "gmt_create":"2020-2-22"        //发布时间
+                }
+            ]
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">activityList</td>
+<td style="text-align: left;">Activity</td>
+<td>活动信息列表</td>
+</tr>
+</tbody>
+</table>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul>
+<h3>根据id删除活动信息</h3>
+<h5>简要描述</h5>
+<ul>
+<li>根据id删除活动信息接口</li>
+</ul>
+<h5>请求URL</h5>
+<ul>
+<li><code>/  /deleteActivity/{id}</code></li>
+</ul>
+<h5>请求方式</h5>
+<ul>
+<li>GET</li>
+</ul>
+<h5>参数</h5>
+<p>无</p>
+<h5>返回示例</h5>
+<table width='100%' class='codestyle'><pre><code>    {
+        "code": 200,
+        "message": "请求成功",
+        "data": {
+        }
+    }</code></pre></table>
+<h5>返回参数说明</h5>
+<p>无</p>
+<h5>备注</h5>
+<ul>
+<li>
+</li>
+</ul></div></body></html>
